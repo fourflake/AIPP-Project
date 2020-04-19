@@ -16,7 +16,7 @@ import utility_functions as utility
 def build(n_classes, arch='vgg16',hidden_units=400,gpu=False):
 
     device = torch.device("cuda" if (gpu==True and torch.cuda.is_available()) else "cpu")
-   
+
     arch_attr = getattr(models, arch)
     model = arch_attr(pretrained=True)
     model.arch = arch_attr
@@ -36,6 +36,7 @@ def build(n_classes, arch='vgg16',hidden_units=400,gpu=False):
                                 nn.Dropout(0.3),
                                 nn.Linear(hidden_units,hidden_units),
                                 nn.ReLU(),     
+                                nn.ReLU(),
                                 nn.Linear(hidden_units,n_classes),
                                 nn.LogSoftmax(dim=1))
     model.to(device)
