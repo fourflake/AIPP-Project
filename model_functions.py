@@ -25,10 +25,15 @@ def build(n_classes, arch='vgg16',hidden_units=400,gpu=False):
 
     if type(model.classifier) == torch.nn.modules.linear.Linear:
         input_units = model.classifier.in_features
-    elif type(model.classifier[0]) == torch.nn.modules.linear.Linear:
-        input_units = model.classifier[0].in_features
     else:
-        input_units = model.classifier[1].in_features
+        for i in range(len(model.classifier)):
+            if type(model.classifier[i]) == torch.nn.modules.linear.Linear:
+                input_units = model.classifier[i].in_features
+                break
+            elif type(model.classifier[i]) == torch.nn.modules.conv.Conv2d:
+                input_units = model.classifier[i].in_channels
+                break
+
 
     model.classifier = nn.Sequential(nn.Linear(input_units,hidden_units),
                                 nn.ReLU(),

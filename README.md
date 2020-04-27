@@ -1,7 +1,7 @@
 # Project: Image Classifier Command Line Application
 Code written for Udacity's AI Programming With Python Nanodegree project.
 
-An image classifier is built with PyTorch and converted into a command line application. The functionality includes training a neural network on any new classified image data set, specifying which network architecture to use (currently implemented for 'vgg16', 'alexnet', 'densenet161') and saving the trained network to a chosen checkpoint. With a trained network, it's possible to load this checkpoint and make predictions on input images and choose the amount of most likely classes to show. 
+An image classifier is built with PyTorch and converted into a command line application. The functionality includes training a neural network on any new classified image data set, specifying which network architecture to use (currently a major part of the torchvision.models architectures is supported) and saving the trained network to a chosen checkpoint. With a trained network, it's possible to load this checkpoint and make predictions on input images and choose the amount of most likely classes to show. 
 
 # Installation
 
